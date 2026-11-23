@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /termin-boerse/
+
+Sitemap: https://www.lativfadecut.de/sitemap.xml
