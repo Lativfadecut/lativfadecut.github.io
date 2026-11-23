@@ -1,4 +1,4 @@
-// Lativ Fade Cut – Termin-Börse (Google Apps Script)
+// Lativ Fade Cut – Termin-Börse (nur Datum, Uhrzeit, Leistung – keine Namen, keine Nummern)
 const PIN = "1234"; // ← HIER deine eigene geheime PIN eintragen
 const MAX_OFFEN = 30;
 
@@ -11,7 +11,7 @@ function sheet_() {
   const ss = SpreadsheetApp.create("Lativ Fade Cut – Termin-Börse");
   p.setProperty("SHEET_ID", ss.getId());
   const sh = ss.getSheets()[0];
-  sh.appendRow(["id", "erstellt", "vorname", "datum", "uhrzeit", "leistung", "telefon_abgeber", "status", "uebernommen_von", "telefon_uebernehmer", "uebernommen_am"]);
+  sh.appendRow(["id", "erstellt", "datum", "uhrzeit", "leistung", "status"]);
   sh.setFrozenRows(1);
   return sh;
 }
@@ -27,32 +27,30 @@ function rows_(sh) {
   return v.map(function (r, i) {
     const o = { _row: i + 2 };
     h.forEach(function (k, j) { o[k] = r[j]; });
-    o.datum = d_(o.datum); o.uhrzeit = t_(o.uhrzeit);
+    o.id = String(o.id); o.datum = d_(o.datum); o.uhrzeit = t_(o.uhrzeit);
     return o;
   });
 }
 
-// Einträge, deren Termin älter als 14 Tage ist, werden gelöscht
+// Vergangene Termine automatisch löschen
 function cleanup_(sh) {
-  const limit = Utilities.formatDate(new Date(Date.now() - 14 * 864e5), "Europe/Berlin", "yyyy-MM-dd");
-  rows_(sh).filter(function (r) { return r.datum < limit; })
+  const today = today_();
+  rows_(sh).filter(function (r) { return r.datum < today; })
     .map(function (r) { return r._row; }).reverse()
     .forEach(function (row) { sh.deleteRow(row); });
 }
 
+function pub_(r) { return { id: r.id, datum: r.datum, uhrzeit: r.uhrzeit, leistung: r.leistung, status: r.status, vergeben: r.status === "vergeben" }; }
+
 function doGet(e) {
   const sh = sheet_(), p = (e && e.parameter) || {}, today = today_();
-  const all = rows_(sh);
+  const all = rows_(sh).filter(function (r) { return r.datum >= today; })
+    .sort(function (a, b) { return (a.datum + a.uhrzeit).localeCompare(b.datum + b.uhrzeit); });
   if (p.action === "admin") {
     if (String(p.pin) !== String(PIN)) return out_({ ok: false, error: "pin" });
-    return out_({ ok: true, rows: all.reverse().map(function (r) {
-      return { vorname: r.vorname, datum: r.datum, uhrzeit: r.uhrzeit, leistung: r.leistung, status: r.status,
-               uebernommen_von: r.uebernommen_von, telefon_abgeber: String(r.telefon_abgeber), telefon_uebernehmer: String(r.telefon_uebernehmer) };
-    }) });
+    return out_({ ok: true, rows: all.map(pub_) });
   }
-  return out_({ ok: true, offers: all.filter(function (r) { return r.datum >= today; }).map(function (r) {
-    return { id: String(r.id), vorname: r.vorname, datum: r.datum, uhrzeit: r.uhrzeit, leistung: r.leistung, vergeben: r.status === "vergeben" };
-  }) });
+  return out_({ ok: true, offers: all.filter(function (r) { return r.status !== "vergeben"; }).map(pub_) });
 }
 
 function doPost(e) {
@@ -62,23 +60,23 @@ function doPost(e) {
     const b = JSON.parse((e && e.postData && e.postData.contents) || "{}"), sh = sheet_(), today = today_();
     if (b.action === "create") {
       if (b.website) return out_({ ok: true }); // Spam-Schutz
-      const v = clean_(b.vorname, 30), d = clean_(b.datum, 10), t = clean_(b.uhrzeit, 5), l = clean_(b.leistung, 60), tel = clean_(b.telefon, 25);
-      if (!v || !/^\d{4}-\d{2}-\d{2}$/.test(d) || !/^\d{2}:\d{2}$/.test(t) || tel.replace(/\D/g, "").length < 6) return out_({ ok: false, error: "daten" });
+      const d = clean_(b.datum, 10), t = clean_(b.uhrzeit, 5), l = clean_(b.leistung, 60);
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(d) || !/^\d{2}:\d{2}$/.test(t) || !l) return out_({ ok: false, error: "daten" });
       if (d < today) return out_({ ok: false, error: "datum" });
       cleanup_(sh);
-      const offen = rows_(sh).filter(function (r) { return r.status !== "vergeben" && r.datum >= today; }).length;
-      if (offen >= MAX_OFFEN) return out_({ ok: false, error: "voll" });
-      sh.appendRow([Utilities.getUuid().slice(0, 8), new Date(), v, "'" + d, "'" + t, l, "'" + tel, "offen", "", "", ""]);
+      const rows = rows_(sh);
+      if (rows.some(function (r) { return r.datum === d && r.uhrzeit === t && r.status !== "vergeben"; })) return out_({ ok: false, error: "doppelt" });
+      if (rows.filter(function (r) { return r.status !== "vergeben"; }).length >= MAX_OFFEN) return out_({ ok: false, error: "voll" });
+      sh.appendRow([Utilities.getUuid().slice(0, 8), new Date(), "'" + d, "'" + t, l, "offen"]);
       return out_({ ok: true });
     }
-    if (b.action === "take") {
-      const n = clean_(b.name, 40), tel = clean_(b.telefon, 25);
-      if (!n || tel.replace(/\D/g, "").length < 6) return out_({ ok: false, error: "daten" });
-      const r = rows_(sh).filter(function (x) { return String(x.id) === String(b.id); })[0];
+    if (b.action === "mark" || b.action === "delete") {
+      if (String(b.pin) !== String(PIN)) return out_({ ok: false, error: "pin" });
+      const r = rows_(sh).filter(function (x) { return x.id === String(b.id); })[0];
       if (!r) return out_({ ok: false, error: "nicht gefunden" });
-      if (r.status === "vergeben") return out_({ ok: false, error: "vergeben" });
-      sh.getRange(r._row, 8, 1, 4).setValues([["vergeben", n, "'" + tel, new Date()]]);
-      return out_({ ok: true, vorname: r.vorname, telefon: String(r.telefon_abgeber) });
+      if (b.action === "mark") sh.getRange(r._row, 6).setValue("vergeben");
+      else sh.deleteRow(r._row);
+      return out_({ ok: true });
     }
     return out_({ ok: false, error: "aktion" });
   } finally {
