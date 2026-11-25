@@ -237,7 +237,7 @@
   .emblem > *{grid-area:1/1}
   .emblem .ring,.emblem .glow{width:min(420px,84vw,46svh);aspect-ratio:1;pointer-events:none}
   .emblem .glow{border-radius:50%;background:radial-gradient(circle,rgba(226,184,102,.22) 0%,rgba(226,184,102,.08) 40%,transparent 70%)}
-  .emblem .ring{will-change:transform;animation:spin 60s linear infinite}
+  .emblem .ring{will-change:transform;animation:spin 60s linear infinite;filter:drop-shadow(0 0 3px rgba(190,220,255,.35))}
   .emblem .r2{animation-duration:38s;animation-direction:reverse}
   .emblem .r3{animation-duration:22s}
   @keyframes spin{to{transform:rotate(360deg)}}
@@ -279,9 +279,9 @@
       <canvas id="sky" aria-hidden="true"></canvas>
       <div class="emblem">
         <div class="glow" aria-hidden="true"></div>
-        <svg class="ring r1" viewBox="0 0 400 400" aria-hidden="true"><circle cx="200" cy="200" r="194" fill="none" stroke="#e2b866" stroke-opacity=".35" stroke-width="1"/><circle cx="200" cy="200" r="186" fill="none" stroke="#e2b866" stroke-opacity=".45" stroke-width="5" stroke-dasharray="1 10.68"/></svg>
-        <svg class="ring r2" viewBox="0 0 400 400" aria-hidden="true"><circle cx="200" cy="200" r="172" fill="none" stroke="#e2b866" stroke-opacity=".55" stroke-width="2" stroke-dasharray="150 120 60 160 220 110" stroke-linecap="round"/></svg>
-        <svg class="ring r3" viewBox="0 0 400 400" aria-hidden="true"><circle cx="200" cy="200" r="158" fill="none" stroke="#f3d27e" stroke-opacity=".7" stroke-width="3" stroke-dasharray="70 178" stroke-linecap="round"/></svg>
+        <svg class="ring r1" viewBox="0 0 400 400" aria-hidden="true"><defs><linearGradient id="dia-r1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".35" stop-color="#cfe2fb"/><stop offset=".55" stop-color="#8fb0db"/><stop offset=".75" stop-color="#f4f9ff"/><stop offset="1" stop-color="#b6cdee"/></linearGradient></defs><circle cx="200" cy="200" r="194" fill="none" stroke="url(#dia-r1)" stroke-opacity=".35" stroke-width="1"/><circle cx="200" cy="200" r="186" fill="none" stroke="url(#dia-r1)" stroke-opacity=".45" stroke-width="5" stroke-dasharray="1 10.68"/></svg>
+        <svg class="ring r2" viewBox="0 0 400 400" aria-hidden="true"><defs><linearGradient id="dia-r2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".35" stop-color="#cfe2fb"/><stop offset=".55" stop-color="#8fb0db"/><stop offset=".75" stop-color="#f4f9ff"/><stop offset="1" stop-color="#b6cdee"/></linearGradient></defs><circle cx="200" cy="200" r="172" fill="none" stroke="url(#dia-r2)" stroke-opacity=".55" stroke-width="2" stroke-dasharray="150 120 60 160 220 110" stroke-linecap="round"/></svg>
+        <svg class="ring r3" viewBox="0 0 400 400" aria-hidden="true"><defs><linearGradient id="dia-r3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".35" stop-color="#cfe2fb"/><stop offset=".55" stop-color="#8fb0db"/><stop offset=".75" stop-color="#f4f9ff"/><stop offset="1" stop-color="#b6cdee"/></linearGradient></defs><circle cx="200" cy="200" r="158" fill="none" stroke="url(#dia-r3)" stroke-opacity=".7" stroke-width="3" stroke-dasharray="70 178" stroke-linecap="round"/></svg>
         <img class="logo" src="img/logo.png" alt="Lativ Fade Cut Logo" fetchpriority="high">
       </div>
       <div class="copy">
