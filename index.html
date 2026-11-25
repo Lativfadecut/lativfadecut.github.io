@@ -640,7 +640,14 @@
     ready = new Promise((res, rej) => {
       (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; const s = d.createElement("script"); s.src = A; s.onload = res; s.onerror = rej; d.head.appendChild(s); cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, ORIGIN + "/embed/embed.js", "init");
       Cal("init", { origin: ORIGIN });
-      Cal("ui", { theme: "dark", styles: { branding: { brandColor: "#e8c36f" } }, hideEventTypeDetails: false, layout: "month_view" });
+      Cal("ui", { theme: "dark", styles: { branding: { brandColor: "#cfe2fb" } }, hideEventTypeDetails: false, layout: "month_view",
+        cssVarsPerTheme: { dark: {
+          "cal-bg": "#0b0b0b", "cal-bg-muted": "#121212", "cal-bg-subtle": "#161616", "cal-bg-emphasis": "#1f2630", "cal-bg-inverted": "#f4f9ff",
+          "cal-text": "#e6e6e6", "cal-text-emphasis": "#ffffff", "cal-text-subtle": "#cfe2fb", "cal-text-muted": "#7d8796", "cal-text-inverted": "#0b0b0b",
+          "cal-brand": "#cfe2fb", "cal-brand-emphasis": "#ffffff", "cal-brand-text": "#0b0b0b", "cal-brand-subtle": "#8fb0db", "cal-brand-accent": "#0b0b0b",
+          "cal-border": "rgba(190,220,255,.2)", "cal-border-subtle": "rgba(190,220,255,.14)", "cal-border-muted": "rgba(190,220,255,.08)", "cal-border-emphasis": "#cfe2fb",
+          "cal-border-booker": "rgba(190,220,255,.3)", "cal-border-booker-width": "1px", "radius": "10px"
+        } } });
       setTimeout(() => rej(new Error("timeout")), 8000);
     });
     return ready;
