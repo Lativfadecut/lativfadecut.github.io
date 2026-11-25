@@ -1,6 +1,29 @@
 // Lativ Fade Cut – Termin-Börse (nur Datum, Uhrzeit, Leistung – keine Namen, keine Nummern)
-const PIN = "1234"; // ← HIER deine eigene geheime PIN eintragen
+// SICHERHEIT: Die PIN steht NICHT mehr im Code (der Code ist öffentlich auf GitHub).
+// Einrichten: Apps Script → Projekteinstellungen → Skripteigenschaften → "PIN" mit
+// mindestens 6 Ziffern anlegen. Ohne gesetzte PIN ist der Verwaltungsbereich gesperrt.
 const MAX_OFFEN = 30;
+const MAX_FEHLVERSUCHE = 5;      // danach 30 Minuten Sperre
+const MAX_EINTRAEGE_PRO_STUNDE = 15;
+
+function pinOk_(pin) {
+  const cache = CacheService.getScriptCache();
+  const fehler = Number(cache.get("pin_fehler") || 0);
+  if (fehler >= MAX_FEHLVERSUCHE) return false;
+  const echt = PropertiesService.getScriptProperties().getProperty("PIN");
+  if (!echt || echt.length < 6) return false;
+  if (String(pin || "") === echt) { cache.remove("pin_fehler"); return true; }
+  cache.put("pin_fehler", String(fehler + 1), 1800);
+  return false;
+}
+
+function eintragErlaubt_() {
+  const cache = CacheService.getScriptCache();
+  const n = Number(cache.get("eintraege") || 0);
+  if (n >= MAX_EINTRAEGE_PRO_STUNDE) return false;
+  cache.put("eintraege", String(n + 1), 3600);
+  return true;
+}
 
 function setup() { sheet_(); }
 
@@ -47,7 +70,7 @@ function doGet(e) {
   const all = rows_(sh).filter(function (r) { return r.datum >= today; })
     .sort(function (a, b) { return (a.datum + a.uhrzeit).localeCompare(b.datum + b.uhrzeit); });
   if (p.action === "admin") {
-    if (String(p.pin) !== String(PIN)) return out_({ ok: false, error: "pin" });
+    if (!pinOk_(p.pin)) return out_({ ok: false, error: "pin" });
     return out_({ ok: true, rows: all.map(pub_) });
   }
   return out_({ ok: true, offers: all.filter(function (r) { return r.status !== "vergeben"; }).map(pub_) });
@@ -60,6 +83,7 @@ function doPost(e) {
     const b = JSON.parse((e && e.postData && e.postData.contents) || "{}"), sh = sheet_(), today = today_();
     if (b.action === "create") {
       if (b.website) return out_({ ok: true }); // Spam-Schutz
+      if (!eintragErlaubt_()) return out_({ ok: false, error: "voll" });
       const d = clean_(b.datum, 10), t = clean_(b.uhrzeit, 5), l = clean_(b.leistung, 60);
       if (!/^\d{4}-\d{2}-\d{2}$/.test(d) || !/^\d{2}:\d{2}$/.test(t) || !l) return out_({ ok: false, error: "daten" });
       if (d < today) return out_({ ok: false, error: "datum" });
@@ -71,7 +95,7 @@ function doPost(e) {
       return out_({ ok: true });
     }
     if (b.action === "mark" || b.action === "delete") {
-      if (String(b.pin) !== String(PIN)) return out_({ ok: false, error: "pin" });
+      if (!pinOk_(b.pin)) return out_({ ok: false, error: "pin" });
       const r = rows_(sh).filter(function (x) { return x.id === String(b.id); })[0];
       if (!r) return out_({ ok: false, error: "nicht gefunden" });
       if (b.action === "mark") sh.getRange(r._row, 6).setValue("vergeben");
