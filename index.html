@@ -15,7 +15,7 @@
 <meta property="og:image" content="https://www.lativfadecut.de/img/logo.png">
 <meta property="og:locale" content="de_DE">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"HairSalon","name":"Lativ Fade Cut","url":"https://www.lativfadecut.de/","logo":"https://www.lativfadecut.de/img/logo.png","image":"https://www.lativfadecut.de/img/logo.png","telephone":"+4917674746361","priceRange":"€€","address":{"@type":"PostalAddress","streetAddress":"Georgenstraße 3","postalCode":"86152","addressLocality":"Augsburg","addressCountry":"DE"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"09:00","closes":"18:00"}],"sameAs":["https://www.instagram.com/lativfadecut1","https://www.tiktok.com/@lativfadecut"]}
+{"@context":"https://schema.org","@type":"HairSalon","name":"Lativ Fade Cut","url":"https://www.lativfadecut.de/","logo":"https://www.lativfadecut.de/img/logo.png","image":"https://www.lativfadecut.de/img/logo.png","telephone":"+4917674746361","email":"latifsharifi44@gmx.de","priceRange":"€€","address":{"@type":"PostalAddress","streetAddress":"Georgenstraße 3","postalCode":"86152","addressLocality":"Augsburg","addressCountry":"DE"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"09:00","closes":"18:00"}],"sameAs":["https://www.instagram.com/lativfadecut1","https://www.tiktok.com/@lativfadecut"]}
 </script>
 <link rel="icon" href="img/logo.png">
 <link rel="preload" as="image" href="img/logo.png" fetchpriority="high">
@@ -43,7 +43,7 @@
   .btn-ghost:hover{border-color:var(--gold)}
   .btn-sm{padding:10px 16px;font-size:.9rem}
 
-  header{position:sticky;top:0;z-index:20;background:rgba(11,11,11,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  header{position:sticky;top:0;z-index:20;background:#0b0b0b;border-bottom:1px solid var(--line)}
   .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
   .nav img{height:42px;width:auto}
   .nav nav{display:flex;gap:22px;align-items:center}
@@ -54,13 +54,8 @@
   @media(max-width:720px){.nav nav a.link{display:none}}
 
   /* 3D-Logo-Hero: Logo setzt sich aus Teilen zusammen, dreht mit Maus/Finger/Scroll */
-  .hero{position:relative;height:118vh}
-  .stage{position:sticky;top:64px;height:calc(100vh - 64px);height:calc(100svh - 64px);overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;text-align:center;padding:0 22px 44px;background:radial-gradient(ellipse 60% 48% at 50% 34%,rgba(201,154,60,.16),transparent 70%)}
-  .stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:pan-y}
-  .stage img.logo{position:absolute;left:50%;top:30%;transform:translate(-50%,-50%);width:min(380px,78vw);height:auto;z-index:1}
-  .stage.gl img.logo{display:none}
-  .stage.flat img.logo{animation:float3d 6s ease-in-out infinite}
-  @keyframes float3d{0%,100%{transform:translate(-50%,-50%) perspective(800px) rotateY(-14deg)}50%{transform:translate(-50%,-54%) perspective(800px) rotateY(14deg)}}
+  .hero{position:relative}
+  .stage{position:relative;min-height:560px;height:calc(100vh - 64px);height:calc(100svh - 64px);overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;text-align:center;padding:0 22px 44px;background:radial-gradient(ellipse 60% 48% at 50% 34%,rgba(201,154,60,.16),transparent 70%)}
   .copy{position:relative;z-index:2}
   .hero p.lead{font-size:clamp(1.05rem,2.6vw,1.25rem);color:var(--muted);max-width:560px;margin:0 auto 22px}
   .hero .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
@@ -129,7 +124,6 @@
 
 
   /* ===== Ganze Seite 3D: fester WebGL-Hintergrund + 3D-Karten ===== */
-  #bg3d{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;display:block}
   main,footer{position:relative;z-index:1}
   section{border-top:1px solid rgba(255,255,255,.07)}
   .card,.prices,.info,.tb-step,.offer,.panel{background:rgba(18,16,13,.9);border-color:rgba(226,184,102,.16)}
@@ -138,8 +132,8 @@
   .card::after,.prices::after,.info::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(226,184,102,.13),transparent 60%)}
   .card:hover::after,.prices:hover::after,.info:hover::after{opacity:1}
   .card h3{transform:translateZ(30px)}
-  .js3d .r3d{opacity:0;transform:perspective(900px) rotateX(16deg) translateY(46px) scale(.97);transition:opacity .9s ease,transform 1s cubic-bezier(.2,.7,.2,1)}
-  .js3d .r3d.in{opacity:1;transform:perspective(900px) rotateX(0) translateY(0) scale(1)}
+  .js3d .r3d{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+  .js3d .r3d.in{opacity:1;transform:none}
   .js3d .r3d.in.tilt{transition:transform .15s ease-out}
 
   /* ===== Gold-Preise + Daten-Pakete zum Logo ===== */
@@ -206,37 +200,18 @@
   .closed #buchen .btn.soon{margin-top:46px}
   .closed #preise .prices{margin-top:62px}
   /* ===== Logo fällt durch den Ring und landet auf dem Landeplatz ===== */
-  #logo3d.fly{position:fixed;inset:auto;left:0;top:0;width:100%;z-index:-1;pointer-events:none}
-  .dock{height:300px;position:relative}
-  @media(max-width:720px){.dock{height:250px}}
-  /* ===== Abstimmung 1–10 ===== */
-  .vote{text-align:center}
-  .vote p.vsub{font-size:1rem;letter-spacing:0;font-weight:400;color:#d6d6d6;max-width:520px;margin:6px auto 22px}
-  .scale{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:8px;max-width:640px;margin:0 auto}
-  @media(max-width:600px){.scale{grid-template-columns:repeat(5,minmax(0,1fr))}}
-  .scale button{height:52px;border-radius:6px;border:1px solid rgba(226,184,102,.45);background:rgba(18,16,13,.9);color:#e8c36f;font:700 1.25rem Inter,sans-serif;cursor:pointer;transition:background .15s,transform .15s}
-  .scale button:hover{background:rgba(226,184,102,.12)}
-  .scale button:focus-visible{outline:2px solid #e8c36f;outline-offset:2px}
-  .scale button.mine{background:#e8c36f;color:#0b0b0b}
-  .scale.done button{cursor:default}
-  .ends{display:flex;justify-content:space-between;max-width:640px;margin:8px auto 0;color:#bdbdbd;font-size:.88rem}
-  .result{margin:22px auto 0;max-width:640px;min-height:1.6em;font-size:1.05rem;color:#ececec}
-  .result b{color:#e8c36f;font-size:1.5rem}
-  .bars{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:8px;max-width:640px;margin:14px auto 0;height:70px;align-items:end}
-  .bars i{display:block;background:linear-gradient(#e8c36f,#a87a2a);border-radius:3px 3px 0 0;min-height:2px}
   /* Kleiner Bewerten-Knopf oben (nur solange die Buchung zu ist) */
   .rate-top{display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border-radius:999px;border:1px solid rgba(226,184,102,.55);color:#e8c36f;text-decoration:none;font-size:.85rem;font-weight:600;white-space:nowrap;background:rgba(11,11,11,.6)}
   .rate-top:hover{background:rgba(226,184,102,.12)}
   .nav nav{gap:12px}
   @media(max-width:420px){.rate-top{padding:7px 10px;font-size:.8rem}.nav .btn{padding:8px 11px;font-size:.8rem}}
   /* ===== Feinschliff: Lesbarkeit, Luxus, Preis-Übersicht ===== */
-  main > section{background:rgba(9,8,7,.78)}
   .eyebrow{color:#e8c36f;font-size:.8rem;letter-spacing:.16em}
   section h2{line-height:1.15}
   section h2::after{content:"";display:block;width:64px;height:1px;margin-top:16px;background:linear-gradient(90deg,#e8c36f,rgba(232,195,111,0))}
-  .vote h2::after,.book h2::after{margin-left:auto;margin-right:auto;background:linear-gradient(90deg,rgba(232,195,111,0),#e8c36f,rgba(232,195,111,0))}
+  .book h2::after{margin-left:auto;margin-right:auto;background:linear-gradient(90deg,rgba(232,195,111,0),#e8c36f,rgba(232,195,111,0))}
   .card h3,.tb-step b{font-family:Inter,system-ui,sans-serif!important;font-weight:600;letter-spacing:0;color:#fff;transform:none}
-  .card p,.tb-step,.offer .what,.note,.tb-intro,.book p,.vote p.vsub{color:#dcdcdc;line-height:1.7}
+  .card p,.tb-step,.offer .what,.note,.tb-intro,.book p{color:#dcdcdc;line-height:1.7}
   .card{padding:26px 24px;border-radius:6px}
   .prices{border-radius:8px}
   .row div{color:#fff}
@@ -256,6 +231,17 @@
   .btn-ghost{text-shadow:none!important;border-color:rgba(255,255,255,.45)!important;background:rgba(11,11,11,.7)}
   .hero .cta .btn{font-size:1.05rem;padding:16px 30px}
   .nav nav a.btn-gold{color:#0b0b0b!important}
+  /* ===== Leichter Logo-Bereich: Sternenhimmel, drehende Ringe, etwas Goldstaub ===== */
+  #sky{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none}
+  .emblem{position:relative;flex:1;min-height:250px;width:100%;display:grid;place-items:center}
+  .emblem > *{grid-area:1/1}
+  .emblem .ring,.emblem .glow{width:min(420px,84vw,46svh);aspect-ratio:1;pointer-events:none}
+  .emblem .glow{border-radius:50%;background:radial-gradient(circle,rgba(226,184,102,.22) 0%,rgba(226,184,102,.08) 40%,transparent 70%)}
+  .emblem .ring{will-change:transform;animation:spin 60s linear infinite}
+  .emblem .r2{animation-duration:38s;animation-direction:reverse}
+  .emblem .r3{animation-duration:22s}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .emblem img.logo{position:relative;width:min(300px,62vw,33svh);height:auto;z-index:1;filter:drop-shadow(0 6px 24px rgba(0,0,0,.6))}
   footer{border-top:1px solid var(--line);padding:30px 0 110px;color:var(--muted);font-size:.85rem;text-align:center}
 
   .float{position:fixed;left:16px;right:16px;bottom:16px;z-index:30;display:none}
@@ -265,7 +251,6 @@
 </head>
 <body>
 
-<canvas id="bg3d" aria-hidden="true"></canvas>
 <header>
   <div class="wrap nav">
     <a href="#top"><img src="img/logo.png" alt="Lativ Fade Cut"></a>
@@ -282,8 +267,14 @@
 <main id="top">
   <div class="hero">
     <div class="stage" id="stage">
-      <canvas id="logo3d" aria-hidden="true"></canvas>
-      <img class="logo" src="img/logo.png" alt="Lativ Fade Cut Logo" fetchpriority="high">
+      <canvas id="sky" aria-hidden="true"></canvas>
+      <div class="emblem">
+        <div class="glow" aria-hidden="true"></div>
+        <svg class="ring r1" viewBox="0 0 400 400" aria-hidden="true"><circle cx="200" cy="200" r="194" fill="none" stroke="#e2b866" stroke-opacity=".35" stroke-width="1"/><circle cx="200" cy="200" r="186" fill="none" stroke="#e2b866" stroke-opacity=".45" stroke-width="5" stroke-dasharray="1 10.68"/></svg>
+        <svg class="ring r2" viewBox="0 0 400 400" aria-hidden="true"><circle cx="200" cy="200" r="172" fill="none" stroke="#e2b866" stroke-opacity=".55" stroke-width="2" stroke-dasharray="150 120 60 160 220 110" stroke-linecap="round"/></svg>
+        <svg class="ring r3" viewBox="0 0 400 400" aria-hidden="true"><circle cx="200" cy="200" r="158" fill="none" stroke="#f3d27e" stroke-opacity=".7" stroke-width="3" stroke-dasharray="70 178" stroke-linecap="round"/></svg>
+        <img class="logo" src="img/logo.png" alt="Lativ Fade Cut Logo" fetchpriority="high">
+      </div>
       <div class="copy">
         <p class="lead">Zertifizierter Friseurmeister in Augsburg. Präzisions-Fades, Bart und Premium-Service.</p>
         <div class="cta">
@@ -295,8 +286,6 @@
       </div>
     </div>
   </div>
-
-  <div class="dock" id="dock" aria-hidden="true"></div>
 
   <section id="leistungen">
     <div class="wrap">
@@ -437,18 +426,6 @@
     </div>
   </section>
 
-  <section class="vote" id="bewerten">
-    <div class="wrap">
-      <div class="eyebrow">Deine Meinung</div>
-      <h2>Wie findest du die Webseite?</h2>
-      <p class="vsub">Bewerte sie von 1 bis 10 – anonym und mit einem Tipp.</p>
-      <div class="scale" id="scale" role="group" aria-label="Bewertung von 1 bis 10"></div>
-      <div class="ends"><span>1 = gar nicht</span><span>10 = mega</span></div>
-      <div class="bars hidden" id="bars" aria-hidden="true"></div>
-      <div class="result" id="result" aria-live="polite"></div>
-    </div>
-  </section>
-
   <section id="kontakt">
     <div class="wrap">
       <div class="eyebrow">Kontakt</div>
@@ -483,7 +460,7 @@
 
 <footer>
   <div class="wrap">
-    <p style="margin-bottom:10px"><b style="color:var(--text)">Impressum</b><br>Latif Sherifi · Lativ Fade Cut<br>Georgenstraße 3 · 86152 Augsburg<br>Telefon: +49 176 74746361</p>
+    <p style="margin-bottom:10px"><b style="color:var(--text)">Impressum</b><br>Latif Sherifi · Lativ Fade Cut<br>Georgenstraße 3 · 86152 Augsburg<br>Telefon: +49 176 74746361<br>E-Mail: <a href="mailto:latifsharifi44@gmx.de" style="color:inherit">latifsharifi44@gmx.de</a></p>
     <p style="margin-bottom:10px"><a href="datenschutz.html" style="color:#e8c36f">Datenschutzerklärung</a></p>
     © <span id="y"></span> Lativ Fade Cut · Augsburg
   </div>
@@ -531,9 +508,6 @@
     document.querySelectorAll("#preise .prices").forEach(function(p){ addBots(p, false); });
     var bk2 = document.querySelector("#buchen .wrap"); if (bk2) bk2.insertAdjacentHTML("afterbegin", '<div class="tape"><span>BAUSTELLE · BALD OFFEN</span></div>');
 
-    // Kleiner Knopf oben neben "Bald verfügbar": springt zur Bewertung
-    var navEl = document.querySelector("header nav"), soonBtn = navEl && navEl.querySelector(".btn.soon");
-    if (navEl && soonBtn) soonBtn.insertAdjacentHTML("beforebegin", '<a class="rate-top" href="#bewerten">&#9733; Bewerten</a>');
 
     var note = document.querySelector("#preise .note");
     if (note) note.textContent = "Die Online-Buchung startet bald – schau bald wieder vorbei. Bezahlung bar oder mit Karte. Alle Preise inkl. MwSt.";
@@ -624,483 +598,9 @@
   if (!API_URL){ $("tbOpen").classList.add("hidden"); $("tbClosed").classList.remove("hidden"); }
   else load();
 </script>
-<script src="js/three.min.js"></script>
-<script>
-{
-  const stage = document.getElementById("stage");
-  const canvas = document.getElementById("logo3d");
-  const hero = stage.parentElement;
-  const reduce = false; // Animation immer an (gewünscht)
-
-  function start(img){
-    if (!window.THREE) return flat();
-    let renderer;
-    try { renderer = new THREE.WebGLRenderer({ canvas, antialias:true, alpha:true }); } catch(e){ return flat(); }
-    canvas.classList.add("fly"); document.querySelector("main").prepend(canvas);
-    const dockEl = document.getElementById("dock");
-    renderer.setPixelRatio(Math.min(devicePixelRatio, 2));          // volle Retina-Schärfe
-
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 100);
-    const group = new THREE.Group(); scene.add(group);
-
-    // Logo in Kacheln zerlegen – nur Kacheln mit sichtbarem Logo
-    const COLS = 32, ROWS = Math.round(32 * img.height / img.width);
-    const LW = 4, LH = LW * img.height / img.width, TW = LW / COLS, TH = LH / ROWS;
-    const LAYERS = 14, DZ = 0.018;
-    const cv = document.createElement("canvas"); cv.width = img.width; cv.height = img.height;
-    const cx = cv.getContext("2d"); cx.drawImage(img, 0, 0);
-    const px = cx.getImageData(0, 0, img.width, img.height).data;
-    const cells = [];
-    for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) {
-      const x0 = Math.floor(c * img.width / COLS), x1 = Math.floor((c + 1) * img.width / COLS);
-      const y0 = Math.floor(r * img.height / ROWS), y1 = Math.floor((r + 1) * img.height / ROWS);
-      let hit = false;
-      for (let y = y0; y < y1 && !hit; y += 2) for (let x = x0; x < x1; x += 2) if (px[(y * img.width + x) * 4 + 3] > 20) { hit = true; break; }
-      if (hit) cells.push([c, r, Math.random(), Math.random(), Math.random(), Math.random()]);
-    }
-
-    // Logo als 1024x1024-Bild (Zweierpotenz) – funktioniert in jedem Browser, auch in Instagram/TikTok
-    const pot = document.createElement("canvas"); pot.width = pot.height = 2048;
-    const pc = pot.getContext("2d"); pc.imageSmoothingEnabled = true; pc.imageSmoothingQuality = "high";
-    pc.drawImage(img, 0, 0, 2048, 2048);
-    const tex = new THREE.CanvasTexture(pot);
-    tex.minFilter = THREE.LinearMipmapLinearFilter; tex.anisotropy = renderer.capabilities.getMaxAnisotropy(); tex.generateMipmaps = true;
-
-    function makeMesh(layerFrom, layerTo, front){
-      const base = new THREE.PlaneGeometry(TW, TH);
-      const g = new THREE.InstancedBufferGeometry();
-      g.index = base.index; g.attributes.position = base.attributes.position; g.attributes.uv = base.attributes.uv;
-      const n = cells.length * (layerTo - layerFrom);
-      const aCell = new Float32Array(n * 2), aRand = new Float32Array(n * 4), aLayer = new Float32Array(n);
-      let i = 0;
-      for (let L = layerFrom; L < layerTo; L++) for (const k of cells) {
-        aCell[i*2] = k[0]; aCell[i*2+1] = k[1];
-        aRand.set([k[2], k[3], k[4], k[5]], i * 4); aLayer[i] = L; i++;
-      }
-      g.setAttribute("aCell", new THREE.InstancedBufferAttribute(aCell, 2));
-      g.setAttribute("aRand", new THREE.InstancedBufferAttribute(aRand, 4));
-      g.setAttribute("aLayer", new THREE.InstancedBufferAttribute(aLayer, 1));
-      g.instanceCount = n;
-      const m = new THREE.ShaderMaterial({
-        uniforms: { map:{ value:tex }, uP:{ value:0 }, uTime:{ value:0 }, uRot:{ value:new THREE.Vector2() }, uTex:{ value:new THREE.Vector2(1 / img.width, 1 / img.height) }, uGrid:{ value:new THREE.Vector2(COLS, ROWS) },
-                    uSize:{ value:new THREE.Vector2(LW, LH) }, uDZ:{ value:DZ }, uLayers:{ value:LAYERS } },
-        vertexShader: `
-          uniform float uP, uDZ; uniform vec2 uGrid, uSize;
-          attribute vec2 aCell; attribute vec4 aRand; attribute float aLayer;
-          varying vec2 vUv; varying float vL;
-          vec3 rot(vec3 v, vec3 a, float t){ return v*cos(t) + cross(a,v)*sin(t) + a*dot(a,v)*(1.0-cos(t)); }
-          void main(){
-            float d = aRand.w * 0.45;
-            float t = clamp((uP - d) / 0.55, 0.0, 1.0);
-            t = 1.0 - pow(1.0 - t, 3.0);
-            vec2 tile = uSize / uGrid;
-            vec3 c = vec3((aCell.x + 0.5) * tile.x - uSize.x * 0.5, uSize.y * 0.5 - (aCell.y + 0.5) * tile.y, 0.0);
-            vec3 axis = normalize(aRand.xyz * 2.0 - 1.0 + 0.001);
-            vec3 local = rot(position + vec3(0.0, 0.0, -aLayer * uDZ), axis, (1.0 - t) * (3.0 + aRand.z * 6.0));
-            vec3 scatter = (aRand.xyz * 2.0 - 1.0) * vec3(7.0, 5.0, 6.0) + vec3(0.0, -1.5, 2.5);
-            vUv = vec2((aCell.x + uv.x) / uGrid.x, 1.0 - (aCell.y + 1.0 - uv.y) / uGrid.y);
-            vL = aLayer;
-            gl_Position = projectionMatrix * modelViewMatrix * vec4(c + local + scatter * (1.0 - t), 1.0);
-          }`,
-        fragmentShader: front ? `
-          uniform sampler2D map; varying vec2 vUv;
-          void main(){ vec4 c = texture2D(map, vUv); if (c.a < 0.02) discard; gl_FragColor = c; }` : `
-          uniform sampler2D map; uniform float uLayers; varying vec2 vUv; varying float vL;
-          void main(){
-            vec4 c = texture2D(map, vUv); if (c.a < 0.5) discard;
-            float k = 1.0 - vL / uLayers * 0.45;
-            gl_FragColor = vec4(mix(c.rgb * 0.62, vec3(0.45, 0.31, 0.11), 0.45) * k, 1.0);
-          }`,
-        side: THREE.DoubleSide, transparent: front, depthWrite: !front
-      });
-      const mesh = new THREE.Mesh(g, m); mesh.frustumCulled = false; mesh.renderOrder = front ? 2 : 1;
-      group.add(mesh); return m;
-    }
-    const mats = [makeMesh(1, LAYERS, false)];          // goldene Kante (Tiefe)
-    // Vorderseite: dein Original-Logo als einfache Fläche – zeigt sich überall
-    const front = new THREE.Mesh(new THREE.PlaneGeometry(LW, LH),
-      new THREE.MeshBasicMaterial({ map:tex, transparent:true, depthWrite:false, side:THREE.DoubleSide }));
-    front.position.z = 0.002; front.renderOrder = 2; group.add(front);
-
-    // Funkel-Sterne auf dem Diamant-Logo
-    const SP = [], SPh = [];
-    for (let tries = 0; SP.length < 3 * 46 && tries < 6000; tries++) {
-      const x = Math.random() * img.width | 0, y = Math.random() * img.height | 0, o = (y * img.width + x) * 4;
-      if (px[o + 3] > 200 && px[o] + px[o + 1] + px[o + 2] > 520) { SP.push(x / img.width * LW - LW / 2, LH / 2 - y / img.height * LH, 0.03); SPh.push(Math.random() * 6.283); }
-    }
-    const spg = new THREE.BufferGeometry(); spg.setAttribute("position", new THREE.Float32BufferAttribute(SP, 3)); spg.setAttribute("aPh", new THREE.Float32BufferAttribute(SPh, 1));
-    const sparkMat = new THREE.ShaderMaterial({
-      uniforms:{ uTime:{ value:0 }, uPR:{ value:renderer.getPixelRatio() } },
-      vertexShader:`uniform float uTime, uPR; attribute float aPh; varying float vA;
-        void main(){ float s = pow(max(sin(uTime * (1.1 + fract(aPh) * .8) + aPh * 3.), 0.), 10.); vA = s;
-          gl_PointSize = (10. + 34. * s) * uPR; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.); }`,
-      fragmentShader:`varying float vA;
-        void main(){ vec2 d = abs(gl_PointCoord - .5) * 2.;
-          float st = max(0., 1. - d.x * 9.) * max(0., 1. - d.y) + max(0., 1. - d.y * 9.) * max(0., 1. - d.x);
-          float glow = max(0., 1. - length(d)) ; float a = (st + glow * glow * .6) * vA;
-          gl_FragColor = vec4(vec3(1., .9, .65) * a, a); }`,
-      transparent:true, depthWrite:false, blending:THREE.AdditiveBlending
-    });
-    const sparks = new THREE.Points(spg, sparkMat); sparks.renderOrder = 3; sparks.frustumCulled = false; sparks.visible = false; group.add(sparks);
-
-    // Goldstaub + feines Linien-Gitter im Hintergrund
-    const N = 380, dp = new Float32Array(N * 3);
-    for (let i = 0; i < N; i++) dp.set([(Math.random() - .5) * 16, (Math.random() - .5) * 10, -Math.random() * 8 - 1], i * 3);
-    const dg = new THREE.BufferGeometry(); dg.setAttribute("position", new THREE.BufferAttribute(dp, 3));
-    const dust = new THREE.Points(dg, new THREE.PointsMaterial({ color:0xd9ad55, size:0.035, transparent:true, opacity:.55, depthWrite:false }));
-
-    // Goldene Fäden hinter dem Logo – fließen nach unten wie ein Wasserfall
-    const TN = 160, SEG = 70, tp = [], ts = [], ti = [];
-    for (let i = 0; i < TN; i++) {
-      const sgn = Math.random() < .5 ? -1 : 1, x = sgn * Math.pow(Math.random(), 1.25) * 7.5;
-      const z = -1.2 - Math.random() * 4, seed = Math.random();
-      for (let j = 0; j <= SEG; j++) {
-        tp.push(x, 6.5 - j * 13 / SEG, z); ts.push(seed);
-        if (j) ti.push(i * (SEG + 1) + j - 1, i * (SEG + 1) + j);
-      }
-    }
-    const tg = new THREE.BufferGeometry();
-    tg.setAttribute("position", new THREE.Float32BufferAttribute(tp, 3));
-    tg.setAttribute("aSeed", new THREE.Float32BufferAttribute(ts, 1));
-    tg.setIndex(ti);
-    const threadMat = new THREE.ShaderMaterial({
-      uniforms: { uTime:{ value:0 } },
-      vertexShader: `
-        uniform float uTime; attribute float aSeed; varying float vY; varying float vSeed;
-        void main(){
-          vec3 p = position;
-          p.x += sin(p.y * 0.55 + uTime * 0.7 + aSeed * 6.28) * 0.14 + sin(p.y * 1.6 - uTime * 1.1 + aSeed * 11.0) * 0.04;
-          vY = p.y; vSeed = aSeed;
-          gl_Position = projectionMatrix * modelViewMatrix * vec4(p, 1.0);
-        }`,
-      fragmentShader: `
-        uniform float uTime; varying float vY; varying float vSeed;
-        void main(){
-          float f = fract(vY * (0.12 + vSeed * 0.08) + uTime * (0.25 + vSeed * 0.35) + vSeed * 7.0);
-          float drop = pow(1.0 - f, 3.0);
-          float fade = smoothstep(-6.5, -2.5, vY) * smoothstep(6.5, 3.0, vY);
-          float a = (0.11 + drop * 0.75) * fade * (0.35 + vSeed * 0.65);
-          gl_FragColor = vec4(mix(vec3(0.78, 0.56, 0.22), vec3(1.0, 0.88, 0.6), drop) * a, a);
-        }`,
-      transparent:true, depthWrite:false, blending:THREE.AdditiveBlending
-    });
-    const threads = new THREE.LineSegments(tg, threadMat); threads.renderOrder = 0; threads.frustumCulled = false;
-    // Fäden laufen jetzt im Seiten-Hintergrund
-
-
-    // ===== JARVIS-HUD: Energiekern, Neuronen-Kugel, gegenläufige Ringe, Teilchen, Puls-Wellen =====
-    const GOLD = 0xe2b866, HOT = 0xfff0c8;
-    const hud = new THREE.Group(); scene.add(hud);
-    const add = (o) => { o.material.transparent = true; o.material.depthWrite = false; o.material.blending = THREE.AdditiveBlending; o.renderOrder = 0; o.frustumCulled = false; return o; };
-    function ring(r, w, op, start, len, segs){
-      const m = new THREE.Mesh(new THREE.RingGeometry(r - w / 2, r + w / 2, segs || 128, 1, start || 0, len || Math.PI * 2),
-        new THREE.MeshBasicMaterial({ color:GOLD, opacity:op, side:THREE.DoubleSide }));
-      m.userData.op = op; return add(m);
-    }
-    function ticks(r, n, l1, l2, op){
-      const p = [];
-      for (let i = 0; i < n; i++) { const a = i / n * Math.PI * 2, l = i % 10 === 0 ? l2 : l1;
-        p.push(Math.cos(a) * r, Math.sin(a) * r, 0, Math.cos(a) * (r + l), Math.sin(a) * (r + l), 0); }
-      const g = new THREE.BufferGeometry(); g.setAttribute("position", new THREE.Float32BufferAttribute(p, 3));
-      const m = new THREE.LineSegments(g, new THREE.LineBasicMaterial({ color:GOLD, opacity:op })); m.userData.op = op; return add(m);
-    }
-    function ringSet(items){ const g = new THREE.Group(); items.forEach(i => g.add(i)); hud.add(g); return g; }
-    const R = {
-      outer: ringSet([ring(3.25, 0.012, .35)]),
-      dash:  ringSet(Array.from({ length:36 }, (_, i) => ring(3.1, 0.035, .45, i / 36 * Math.PI * 2, Math.PI * 2 / 36 * .55, 4))),
-      tick:  ringSet([ticks(2.78, 120, 0.06, 0.16, .55)]),
-      arcs:  ringSet([ring(2.6, 0.05, .7, 0.2, 1.4), ring(2.6, 0.05, .7, 2.3, 0.6), ring(2.6, 0.05, .7, 3.6, 1.9)]),
-      thin:  ringSet([ring(2.47, 0.01, .4)]),
-      inner: ringSet([ring(2.36, 0.07, .55, 0, .35), ring(2.36, 0.07, .55, Math.PI / 2, .35), ring(2.36, 0.07, .55, Math.PI, .35), ring(2.36, 0.07, .55, Math.PI * 1.5, .35)])
-    };
-    R.arcs.rotation.x = 0.0; R.dash.position.z = -0.05; R.outer.position.z = -0.1;
-
-    // Neuronen-Kugel hinter dem Logo
-    const NP = 240, sp = [], spv = [];
-    for (let i = 0; i < NP; i++) { const y = 1 - 2 * (i + .5) / NP, rr = Math.sqrt(1 - y * y), th = i * 2.39996;
-      const v = new THREE.Vector3(Math.cos(th) * rr, y, Math.sin(th) * rr).multiplyScalar(2.15); spv.push(v); sp.push(v.x, v.y, v.z); }
-    const sl = [];
-    spv.forEach((a, i) => spv.forEach((b, j) => { if (j > i && a.distanceTo(b) < 0.62) sl.push(a.x, a.y, a.z, b.x, b.y, b.z); }));
-    const sphere = new THREE.Group(); sphere.position.z = -2.4; hud.add(sphere);
-    const sg = new THREE.BufferGeometry(); sg.setAttribute("position", new THREE.Float32BufferAttribute(sp, 3));
-    const sNodes = add(new THREE.Points(sg, new THREE.PointsMaterial({ color:HOT, size:0.045, opacity:.7 }))); sNodes.userData.op = .7;
-    const lg2 = new THREE.BufferGeometry(); lg2.setAttribute("position", new THREE.Float32BufferAttribute(sl, 3));
-    const sLines = add(new THREE.LineSegments(lg2, new THREE.LineBasicMaterial({ color:GOLD, opacity:.16 }))); sLines.userData.op = .16;
-    sphere.add(sNodes, sLines);
-
-    // Energiekern (Glühen)
-    const gc = document.createElement("canvas"); gc.width = gc.height = 128; const gx = gc.getContext("2d");
-    const grd = gx.createRadialGradient(64, 64, 0, 64, 64, 64);
-    grd.addColorStop(0, "rgba(255,244,214,1)"); grd.addColorStop(.25, "rgba(240,190,95,.55)"); grd.addColorStop(1, "rgba(200,140,40,0)");
-    gx.fillStyle = grd; gx.fillRect(0, 0, 128, 128);
-    const core = add(new THREE.Sprite(new THREE.SpriteMaterial({ map:new THREE.CanvasTexture(gc), opacity:0 })));
-    core.position.z = -0.6; hud.add(core);
-
-    // Energie-Teilchen auf Umlaufbahnen
-    const EP = 260, ep = new Float32Array(EP * 3), eo = [];
-    for (let i = 0; i < EP; i++) eo.push({ r:2.3 + Math.random() * 1.3, a:Math.random() * 6.283, v:(Math.random() < .5 ? -1 : 1) * (0.15 + Math.random() * 0.5), z:(Math.random() - .5) * 0.6 });
-    const eg = new THREE.BufferGeometry(); eg.setAttribute("position", new THREE.BufferAttribute(ep, 3));
-    const energy = add(new THREE.Points(eg, new THREE.PointsMaterial({ color:HOT, size:0.035, opacity:.85 }))); energy.userData.op = .85;
-    hud.add(energy);
-
-    // Puls-Wellen
-    const waves = [0, 1, 2].map(() => { const w = ring(1, 0.02, 0); w.userData.op = 0; hud.add(w); return w; });
-    const shock = ring(1, 0.08, 0); hud.add(shock);
-
-    // ===== Landeplatz + Daten, die nach oben steigen =====
-    const dockG = new THREE.Group(); scene.add(dockG);
-    const pad = new THREE.Group(); pad.rotation.x = -1.22; dockG.add(pad);
-    const padRings = [ring(2.05, 0.07, .85), ring(2.45, 0.02, .45), ring(1.6, 0.015, .35)];
-    padRings.forEach(m => pad.add(m));
-    const padTicks = ticks(2.2, 72, 0.08, 0.18, .5); pad.add(padTicks);
-    const padGlow = add(new THREE.Sprite(core.material.clone())); padGlow.scale.set(5.5, 2.2, 1); dockG.add(padGlow);
-    const landShock = ring(1, 0.09, 0); pad.add(landShock);
-    const upWaves = [0, 1, 2].map(() => { const w = ring(1.6, 0.03, 0); w.userData.op = .45; const g = new THREE.Group(); g.rotation.x = -1.22; g.add(w); dockG.add(g); return g; });
-    // Fäden nach oben (Pulse laufen aufwärts)
-    const UN = 70, US = 40, up = [], ua = [], us = [], ui = [];
-    for (let i = 0; i < UN; i++) { const sg = Math.random() < .5 ? -1 : 1, x = sg * Math.pow(Math.random(), 1.2) * 4.2, sd = Math.random();
-      for (let j = 0; j <= US; j++) { up.push(x, 0, (Math.random() - .5) * 0.2); ua.push(j / US); us.push(sd); if (j) ui.push(i * (US + 1) + j - 1, i * (US + 1) + j); } }
-    const ug = new THREE.BufferGeometry(); ug.setAttribute("position", new THREE.Float32BufferAttribute(up, 3));
-    ug.setAttribute("aT", new THREE.Float32BufferAttribute(ua, 1)); ug.setAttribute("aSeed", new THREE.Float32BufferAttribute(us, 1)); ug.setIndex(ui);
-    const upMat = new THREE.ShaderMaterial({
-      uniforms:{ uTime:{ value:0 }, uLen:{ value:8 }, uA:{ value:0 } },
-      vertexShader:`uniform float uTime, uLen; attribute float aT; attribute float aSeed; varying float vT; varying float vS;
-        void main(){ vec3 p = position; float y = aT * uLen * (0.55 + aSeed * 0.45);
-          p.x = p.x * (0.18 + 0.82 * aT) + sin(y * .7 - uTime * 1.2 + aSeed * 9.) * .12 * aT;
-          p.y = y; vT = aT; vS = aSeed; gl_Position = projectionMatrix * modelViewMatrix * vec4(p, 1.); }`,
-      fragmentShader:`uniform float uTime, uA; varying float vT; varying float vS;
-        void main(){ float g = fract(vT * (2.2 + vS * 1.5) - uTime * (.35 + vS * .4) + vS * 5.); float d = pow(g, 4.);
-          float fade = smoothstep(0., .06, vT) * (1. - smoothstep(.55, 1., vT));
-          float a = (.12 + d * 1.) * fade * (.45 + vS * .55) * uA;
-          gl_FragColor = vec4(mix(vec3(.78,.56,.22), vec3(1.,.9,.65), d) * a, a); }`,
-      transparent:true, depthWrite:false, blending:THREE.AdditiveBlending
-    });
-    const upThreads = new THREE.LineSegments(ug, upMat); upThreads.frustumCulled = false; dockG.add(upThreads);
-    // Daten-Teilchen steigen auf
-    const BP = 160, bp = new Float32Array(BP * 3), bo = [];
-    for (let i = 0; i < BP; i++) bo.push({ x:(Math.random() - .5) * 3, y:Math.random(), v:.12 + Math.random() * .3, w:Math.random() * 6 });
-    const bg2 = new THREE.BufferGeometry(); bg2.setAttribute("position", new THREE.BufferAttribute(bp, 3));
-    const bits = add(new THREE.Points(bg2, new THREE.PointsMaterial({ color:HOT, size:0.06, opacity:0 }))); bits.frustumCulled = false; dockG.add(bits);
-
-    let W = 0, H = 0, lift = 0, ppw = 60, startPx = 300, lastW = 0, wasDocked = false, landT = -9, cleared = false;
-    const TOUCH = matchMedia("(pointer:coarse)").matches;
-    const toY = (py) => (H / 2 - py) / ppw;
-    function size(){
-      const Hn = TOUCH ? Math.max(innerHeight, screen.height) : innerHeight;
-      if (!(TOUCH && innerWidth === lastW && H)) { W = innerWidth; H = Hn; lastW = W;
-        renderer.setSize(W, H, false); canvas.style.height = H + "px"; camera.aspect = W / H; }
-      const sH = stage.clientHeight;
-      const copyH = stage.querySelector(".copy").offsetHeight + parseFloat(getComputedStyle(stage).paddingBottom);
-      const free = Math.max(0.35 * sH, sH - copyH - 20);              // Platz über dem Text (px)
-      ppw = Math.min(free * 0.98 / 6.1, W * 0.96 / 5.0);               // Pixel pro 3D-Einheit
-      const tan = Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
-      camera.position.set(0, 0, (H / ppw) / (2 * tan)); camera.updateProjectionMatrix();
-      startPx = 64 + free / 2;
-      const im = stage.querySelector("img.logo");
-      if (im) { im.style.top = (free / 2) + "px"; im.style.width = (LW * ppw) + "px"; }
-      upMat.uniforms.uLen.value = H / ppw * 0.85;
-    }
-    size(); new ResizeObserver(size).observe(stage); addEventListener("resize", size);
-
-    let mx = 0, my = 0, tx = 0, ty = 0;
-    addEventListener("pointermove", e => { tx = e.clientX / innerWidth * 2 - 1; ty = e.clientY / innerHeight * 2 - 1; }, { passive:true });
-
-    // Alle Effekte einmal vorab vorbereiten, damit das erste Scrollen nicht ruckelt
-    let glOn = false;
-    try { landShock.visible = true; renderer.compile(scene, camera); landShock.visible = false; } catch (err) {}
-    const t0 = performance.now();
-    const clamp = (x) => Math.min(1, Math.max(0, x));
-    const back = (x) => { const c = 2.2; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); };
-    function frame(now){
-      const time = (now - t0) / 1000;
-      const dr = dockEl.getBoundingClientRect();
-      const dockPx = dr.top + dr.height * 0.42;
-      const D = Math.max(1, dr.top + scrollY + dr.height * 0.42 - innerHeight * 0.6);
-      const f = clamp(scrollY / D);                    // 0 = oben, 1 = gelandet
-      const e = f * f * (3 - 2 * f);                    // weich fallen
-      const s = 0;
-
-      // 1) Kern lädt auf (0–1.3 s)  2) Logo knallt rein (1.3 s)  3) HUD läuft
-      const charge = 1, hit = -1, hudIn = 1;   // kein Intro: Logo ist sofort da
-      group.visible = true;
-      const sc = 1;
-      const DOCK_S = 0.52;
-      group.scale.setScalar(sc * (1 + (DOCK_S - 1) * e));
-      mats.forEach(m => { m.uniforms.uP.value = 1; m.uniforms.uTime.value = time; m.uniforms.uRot.value.set(group.rotation.x, group.rotation.y); });
-      sparkMat.uniforms.uTime.value = time;
-
-      mx += (tx - mx) * 0.06; my += (ty - my) * 0.06;
-      group.rotation.y = mx * 0.4 + Math.sin(time * 0.6) * 0.1 + e * Math.PI * 2;   // eine Drehung im Fall
-      group.rotation.x = my * 0.2 + Math.sin(e * Math.PI) * 0.55;
-      group.position.y = toY(startPx + (dockPx - startPx) * e);
-
-      // Der Jarvis-Ring bleibt oben, öffnet sich wie ein Loch und verblasst, wenn das Logo durchfällt
-      hud.position.y = toY(startPx);
-      hud.rotation.y = mx * 0.18; hud.rotation.x = my * 0.12;
-      hud.scale.setScalar(0.88 * (0.55 + 0.45 * (1 - Math.pow(1 - hudIn, 3))) * (1 + e * 0.5));
-      const fadeS = 1 - clamp(f / 0.4);
-      R.outer.rotation.z = time * 0.05;  R.dash.rotation.z = -time * 0.12;
-      R.tick.rotation.z = time * 0.18;   R.arcs.rotation.z = -time * 0.45 + Math.sin(time * 0.9) * 0.3;
-      R.thin.rotation.z = time * 0.3;    R.inner.rotation.z = time * 0.8;
-      Object.values(R).forEach(g => g.visible = false);   // HUD-Ringe ausgeblendet
-      sphere.visible = false;   // Neuronen-Kugel ausgeblendet
-      sphere.rotation.y = time * 0.15; sphere.rotation.x = Math.sin(time * 0.2) * 0.3;
-      sNodes.material.opacity = sNodes.userData.op * hudIn * 0.8 * fadeS;
-      sLines.material.opacity = sLines.userData.op * hudIn * fadeS;
-
-      // Kern: lädt auf, Blitz beim Einschlag, dann ruhiges Pulsieren
-      const flash = hit > 0 ? Math.exp(-hit * 4) : 0;
-      core.scale.setScalar(1.2 + charge * 3.2 + flash * 5);
-      core.material.opacity = Math.min(1, charge * 0.55 + flash * 0.9) * 0.55 * fadeS;
-
-      // Teilchen: vor dem Einschlag spiralförmig nach innen, danach auf Umlaufbahnen
-      const pull = time < 1.3 ? 1 - charge : 0;
-      for (let i = 0; i < EP; i++) { const o = eo[i]; o.a += o.v * 0.016 * (1 + pull * 4);
-        const rr = o.r * (1 + pull * 1.6) * (time < 1.3 ? 1 : 1 + flash * 0.3);
-        ep[i * 3] = Math.cos(o.a) * rr; ep[i * 3 + 1] = Math.sin(o.a) * rr; ep[i * 3 + 2] = o.z; }
-      eg.attributes.position.needsUpdate = true;
-      energy.material.opacity = energy.userData.op * hudIn * fadeS;
-
-      // Schockwelle beim Einschlag + Puls-Wellen alle 3 s
-      shock.visible = false;
-      waves.forEach((w, i) => { const ph = ((time - 2 + i) % 3) / 3; const on = time > 2 + i;
-        w.scale.setScalar(2.2 + ph * 2.4); w.material.opacity = 0; });   // Puls-Ringe aus
-
-      // ===== Landeplatz: Landung + Daten nach oben =====
-      dockG.position.y = toY(dockPx);
-      pad.position.y = -LH * DOCK_S * 0.42;
-      const docked = f >= 0.995;
-      if (docked && !wasDocked && time > 1.5) landT = time;
-      wasDocked = docked;
-      const land = clamp((f - 0.9) / 0.1), lt = time - landT;
-      padRings.forEach(m => m.material.opacity = m.userData.op * (0.35 + 0.65 * land));
-      padTicks.material.opacity = padTicks.userData.op * (0.35 + 0.65 * land);
-      pad.rotation.z = time * 0.25;
-      padGlow.position.y = pad.position.y; padGlow.material.opacity = 0.35 + 0.35 * land;
-      if (lt >= 0 && lt < 1) { landShock.visible = true; landShock.scale.setScalar(2 + lt * 3); landShock.material.opacity = (1 - lt) * 0.9; } else landShock.visible = false;
-      upMat.uniforms.uTime.value = time; upMat.uniforms.uA.value = land;
-      upThreads.position.y = pad.position.y;
-      upWaves.forEach((g, i) => { const ph = ((time + i) % 3) / 3;
-        g.position.y = pad.position.y + ph * 4.5; g.scale.setScalar(1 + ph * 1.8); g.children[0].material.opacity = (1 - ph) * 0.4 * land; });
-      for (let i = 0; i < BP; i++) { const o = bo[i]; o.y += o.v * 0.016 / 4; if (o.y > 1) { o.y = 0; o.x = (Math.random() - .5) * 3; }
-        bp[i * 3] = o.x * (0.4 + o.y * 1.6) + Math.sin(time + o.w) * 0.1; bp[i * 3 + 1] = pad.position.y + o.y * upMat.uniforms.uLen.value * 0.8; bp[i * 3 + 2] = 0.1; }
-      bg2.attributes.position.needsUpdate = true; bits.material.opacity = 0.8 * land;
-
-      threadMat.uniforms.uTime.value = time;
-      dust.rotation.y = time * 0.02;
-      const show = dr.bottom > -40 || f < 1;
-      if (show) { renderer.render(scene, camera); cleared = false; if (!glOn) { glOn = true; stage.classList.add("gl"); } }
-      else if (!cleared) { renderer.clear(); cleared = true; }
-      requestAnimationFrame(frame);
-    }
-    requestAnimationFrame(frame);
-  }
-
-  // Ersatz ohne 3D: Wasserfall-Fäden in 2D + schwebendes Logo
-  function flat(){
-    stage.classList.remove("gl"); stage.classList.add("flat");
-    const c2 = document.createElement("canvas"); c2.style.cssText = "position:absolute;inset:0;width:100%;height:100%";
-    canvas.remove(); return; // kein Regen im Ersatz
-    const T = []; for (let i = 0; i < 120; i++) { const s = Math.random() < .5 ? -1 : 1; T.push({ x:.5 + s * Math.pow(Math.random(), 1.25) * .5, k:Math.random() }); }
-    (function loop(now){
-      const w = c2.width = stage.clientWidth * Math.min(devicePixelRatio, 2), h = c2.height = stage.clientHeight * Math.min(devicePixelRatio, 2), t = now / 1000;
-      g.lineWidth = Math.min(devicePixelRatio, 2);
-      for (const d of T) {
-        const x = d.x * w, sp = (0.25 + d.k * 0.35) * h * 0.35, len = h * (0.12 + d.k * 0.1);
-        g.strokeStyle = "rgba(200,145,60," + (0.025 + d.k * 0.035) + ")";
-        g.beginPath(); g.moveTo(x, 0); g.lineTo(x + Math.sin(t * .7 + d.k * 6) * 6, h); g.stroke();
-        const y = ((t * sp + d.k * h * 3) % (h + len)) - len * 0.2;
-        const gr = g.createLinearGradient(0, y - len, 0, y);
-        gr.addColorStop(0, "rgba(255,215,140,0)"); gr.addColorStop(1, "rgba(255,225,160," + (0.35 + d.k * 0.5) + ")");
-        g.strokeStyle = gr; g.beginPath(); g.moveTo(x, y - len); g.lineTo(x + Math.sin(t * .7 + d.k * 6) * 6 * y / h, y); g.stroke();
-      }
-      requestAnimationFrame(loop);
-    })(performance.now());
-  }
-
-  const img = new Image();
-  img.onload = () => { try { start(img); } catch(e){ flat(); } };
-  img.onerror = flat;
-  img.src = "img/logo.png";
-}
-</script>
 
 <script>
 {
-  // ===== 3D-Hintergrund für die ganze Seite: Flug durch HUD-Ringe, Gold-Wasserfall, Teilchen =====
-  const cv = document.getElementById("bg3d");
-  let R3;
-  try { if (!window.THREE) throw 0; R3 = new THREE.WebGLRenderer({ canvas:cv, antialias:true, alpha:true }); } catch(e){ cv.style.display = "none"; }
-  if (R3) {
-    const TOUCH = matchMedia("(pointer:coarse)").matches;
-    R3.setPixelRatio(Math.min(devicePixelRatio, TOUCH ? 1.5 : 2));
-    const scene = new THREE.Scene(), cam = new THREE.PerspectiveCamera(55, 1, 0.1, 120); scene.add(cam);
-    const ADD = { transparent:true, depthWrite:false, blending:THREE.AdditiveBlending };
-    const GOLD = 0xe2b866;
-    const DEPTH = 90, GATES = 11, gates = [];
-    for (let i = 0; i < GATES; i++) {
-      const g = new THREE.Group(), r = 5.5 + (i % 3) * 0.8, z = -i * DEPTH / GATES - 6;
-      const m1 = new THREE.Mesh(new THREE.RingGeometry(r - .015, r + .015, 160), new THREE.MeshBasicMaterial(Object.assign({ color:GOLD, opacity:.2 }, ADD)));
-      const arcs = [0, 2.2, 4.1].map((a, k) => new THREE.Mesh(new THREE.RingGeometry(r + .25, r + .32, 64, 1, a + i, .7 + k * .4), new THREE.MeshBasicMaterial(Object.assign({ color:GOLD, opacity:.26, side:THREE.DoubleSide }, ADD))));
-      const tp = []; for (let t = 0; t < 90; t++) { const a = t / 90 * 6.283, l = t % 10 ? .12 : .3; tp.push(Math.cos(a) * (r - .2), Math.sin(a) * (r - .2), 0, Math.cos(a) * (r - .2 - l), Math.sin(a) * (r - .2 - l), 0); }
-      const tg = new THREE.BufferGeometry(); tg.setAttribute("position", new THREE.Float32BufferAttribute(tp, 3));
-      const tk = new THREE.LineSegments(tg, new THREE.LineBasicMaterial(Object.assign({ color:GOLD, opacity:.18 }, ADD)));
-      g.add(m1, tk, ...arcs); g.position.set((i % 2 ? 1 : -1) * 0.6, (i % 3 - 1) * 0.5, z);
-      g.userData = { spin:(i % 2 ? 1 : -1) * (0.05 + i * 0.01), z };
-      gates.push(g); // Ring-Tunnel ausgeblendet – nur Sternenhimmel
-    }
-    // Teilchen im ganzen Tunnel (Tiefe beim Scrollen)
-    const N = 2600, dp = new Float32Array(N * 3);
-    for (let i = 0; i < N; i++) { const a = Math.random() * 6.283, rr = 1 + Math.random() * 14; dp.set([Math.cos(a) * rr, Math.sin(a) * rr, 8 - Math.random() * (DEPTH + 20)], i * 3); }
-    const dg = new THREE.BufferGeometry(); dg.setAttribute("position", new THREE.BufferAttribute(dp, 3));
-    const dust = new THREE.Points(dg, new THREE.PointsMaterial(Object.assign({ color:0xf3dca6, size:0.045, opacity:.75 }, ADD)));
-    scene.add(dust);
-    // Gold-Wasserfall hängt an der Kamera – immer sichtbar, auf jeder Höhe der Seite
-    const TN = 150, SEG = 60, tp = [], ts = [], ti = [];
-    for (let i = 0; i < TN; i++) { const sg = Math.random() < .5 ? -1 : 1, x = sg * Math.pow(Math.random(), 1.1) * 9, z = -6 - Math.random() * 6, sd = Math.random();
-      for (let j = 0; j <= SEG; j++) { tp.push(x, 7 - j * 14 / SEG, z); ts.push(sd); if (j) ti.push(i * (SEG + 1) + j - 1, i * (SEG + 1) + j); } }
-    const thg = new THREE.BufferGeometry(); thg.setAttribute("position", new THREE.Float32BufferAttribute(tp, 3)); thg.setAttribute("aSeed", new THREE.Float32BufferAttribute(ts, 1)); thg.setIndex(ti);
-    const thm = new THREE.ShaderMaterial(Object.assign({
-      uniforms:{ uTime:{ value:0 } },
-      vertexShader:`uniform float uTime; attribute float aSeed; varying float vY; varying float vS;
-        void main(){ vec3 p = position; p.x += sin(p.y*.55 + uTime*.7 + aSeed*6.28)*.14 + sin(p.y*1.6 - uTime*1.1 + aSeed*11.)*.04;
-        vY = p.y; vS = aSeed; gl_Position = projectionMatrix * modelViewMatrix * vec4(p,1.); }`,
-      fragmentShader:`uniform float uTime; varying float vY; varying float vS;
-        void main(){ float f = fract(vY*(.12+vS*.08) + uTime*(.25+vS*.35) + vS*7.); float d = pow(1.-f,3.);
-        float fade = smoothstep(-7.,-3.,vY)*smoothstep(7.,3.5,vY); float a = (.08 + d*.6)*fade*(.3+vS*.7);
-        gl_FragColor = vec4(mix(vec3(.78,.56,.22), vec3(1.,.88,.6), d)*a, a); }`
-    }, ADD));
-    const threads = new THREE.LineSegments(thg, thm); threads.frustumCulled = false; // Regen ausgeschaltet
-
-    let lastW = 0, maxScroll = 1;
-    function size(){ const w = innerWidth, h = TOUCH ? Math.max(innerHeight, screen.height) : innerHeight;
-      if (TOUCH && w === lastW) return; lastW = w;                     // Safari-Leiste: nicht neu aufbauen
-      R3.setSize(w, h, false); cam.aspect = w / h; cam.updateProjectionMatrix(); }
-    size(); addEventListener("resize", size);
-    const measure = () => { maxScroll = Math.max(1, document.documentElement.scrollHeight - innerHeight); };
-    measure(); new ResizeObserver(measure).observe(document.body);
-    let odd = false;
-    let px = 0, py = 0, tx = 0, ty = 0, sm = 0;
-    addEventListener("pointermove", e => { tx = e.clientX / innerWidth * 2 - 1; ty = e.clientY / innerHeight * 2 - 1; }, { passive:true });
-    const t0 = performance.now();
-    (function loop(now){
-      const t = (now - t0) / 1000;
-      if (TOUCH && (odd = !odd)) { requestAnimationFrame(loop); return; }   // Handy: 30 Bilder/s für den Hintergrund
-      sm += (scrollY / maxScroll - sm) * (TOUCH ? 0.16 : 0.08);                         // weiches Scrollen
-      px += (tx - px) * .05; py += (ty - py) * .05;
-      cam.position.set(px * .6, -py * .4, 10 - sm * (DEPTH - 4));
-      cam.rotation.set(-py * .05, -px * .07, Math.sin(t * .15) * .03 + sm * .6);
-      gates.forEach(g => { g.rotation.z = t * g.userData.spin; const d = cam.position.z - g.position.z;
-        const o = Math.min(1, Math.max(0, (d - 1.5) / 6)) * Math.min(1, Math.max(0, 1 - (d - 30) / 30));
-        g.children.forEach(m => { m.material.opacity = (m.userData.o ?? (m.userData.o = m.material.opacity)) * o; }); });
-      dust.rotation.z = t * .01;
-      thm.uniforms.uTime.value = t;
-      R3.render(scene, cam);
-      requestAnimationFrame(loop);
-    })(t0);
-  }
-
   // ===== 3D-Karten: kippen beim Reinscrollen + neigen sich mit Maus =====
   document.documentElement.classList.add("js3d");
   const els = document.querySelectorAll(".card, .prices, .tb-step, .info, .contact .photo, section h2, .note, .book .btn");
@@ -1119,38 +619,6 @@
 </script>
 
 
-<script>
-{
-  // ===== Abstimmung: Wie findest du die Webseite? (1–10) =====
-  const API = "https://countapi.mileshilliard.com/api/v1/";
-  const KEY = n => "lativfadecut-webseite-bewertung-" + n;
-  const scale = document.getElementById("scale"), result = document.getElementById("result"), bars = document.getElementById("bars");
-  let mine = null; try { mine = localStorage.getItem("lfc-bewertung"); } catch(e) {}
-  for (let n = 1; n <= 10; n++) scale.insertAdjacentHTML("beforeend", '<button type="button" data-n="' + n + '" aria-label="' + n + ' von 10">' + n + '</button>');
-  const get = n => fetch(API + "get/" + KEY(n)).then(r => r.ok ? r.json() : { value:0 }).then(d => +d.value || 0).catch(() => 0);
-  function showVotes(counts){
-    const total = counts.reduce((a, b) => a + b, 0);
-    if (!total) { result.textContent = mine ? "Danke für deine Bewertung!" : "Sei der Erste, der bewertet."; return; }
-    const avg = counts.reduce((a, c, i) => a + c * (i + 1), 0) / total;
-    result.innerHTML = (mine ? "Danke! Du hast " + mine + " gegeben.<br>" : "") +
-      "Durchschnitt: <b>" + avg.toFixed(1).replace(".", ",") + "</b> von 10 · " + total + (total === 1 ? " Stimme" : " Stimmen");
-    const mx = Math.max(...counts);
-    bars.innerHTML = counts.map(c => '<i style="height:' + Math.max(3, c / mx * 100) + '%"></i>').join("");
-    bars.classList.remove("hidden");
-  }
-  function loadVotes(){ return Promise.all([1,2,3,4,5,6,7,8,9,10].map(get)).then(showVotes); }
-  function lockVotes(){ scale.classList.add("done"); scale.querySelectorAll("button").forEach(b => { b.disabled = true; if (b.dataset.n === mine) b.classList.add("mine"); }); }
-  if (mine) lockVotes();
-  scale.addEventListener("click", e => {
-    const b = e.target.closest("button"); if (!b || mine) return;
-    mine = b.dataset.n; try { localStorage.setItem("lfc-bewertung", mine); } catch(err) {}
-    lockVotes(); result.textContent = "Wird gespeichert …";
-    fetch(API + "hit/" + KEY(mine)).catch(() => {}).then(loadVotes);
-  });
-  // Ergebnisse laden, sobald man den Bereich erreicht
-  new IntersectionObserver((en, o) => { if (en[0].isIntersecting) { o.disconnect(); loadVotes(); } }).observe(scale);
-}
-</script>
 
 <script>
 {
@@ -1179,6 +647,79 @@
     }).catch(() => { location.href = a.href; })   // falls etwas schiefgeht: normale Buchungsseite
       .finally(() => a.classList.remove("loading"));
   });
+}
+</script>
+
+<script>
+{
+  // ===== Leichter Sternenhimmel + Goldstaub + feine Fäden – nur im Logo-Bereich =====
+  // Läuft mit 30 Bildern/s und pausiert, sobald der Bereich nicht sichtbar ist.
+  const cv = document.getElementById("sky"), stage = document.getElementById("stage");
+  const g = cv && cv.getContext("2d");
+  if (g) {
+    const stars = document.createElement("canvas"), sg = stars.getContext("2d");
+    let W = 0, H = 0, dpr = 1, lastW = 0, cx = 0, cy = 0, R = 0;
+    const dust = [], threads = [];
+    const rnd = (a, b) => a + Math.random() * (b - a);
+    function layout(){
+      const em = stage.querySelector(".emblem .glow").getBoundingClientRect(), sr = stage.getBoundingClientRect();
+      cx = em.left - sr.left + em.width / 2; cy = em.top - sr.top + em.height / 2; R = em.width / 2;
+    }
+    function size(){
+      if (stage.clientWidth === lastW && W) { layout(); return; }
+      lastW = stage.clientWidth; dpr = Math.min(devicePixelRatio || 1, 1.5);
+      W = stage.clientWidth; H = stage.clientHeight;
+      for (const c of [cv, stars]) { c.width = W * dpr; c.height = H * dpr; }
+      g.setTransform(dpr, 0, 0, dpr, 0, 0); sg.setTransform(dpr, 0, 0, dpr, 0, 0);
+      layout();
+      // Sterne einmal zeichnen
+      sg.clearRect(0, 0, W, H);
+      const n = Math.round(W * H / 2600);
+      for (let i = 0; i < n; i++) {
+        const r = Math.random() < .9 ? rnd(.4, .9) : rnd(1, 1.6);
+        sg.fillStyle = "rgba(243,220,166," + rnd(.25, .8).toFixed(2) + ")";
+        sg.beginPath(); sg.arc(rnd(0, W), rnd(0, H), r, 0, 6.283); sg.fill();
+      }
+      // Goldstaub rund ums Logo
+      dust.length = 0;
+      for (let i = 0; i < 42; i++) dust.push({ a: rnd(0, 6.283), d: rnd(.35, 1.15), y: rnd(0, 1), v: rnd(.012, .035), s: rnd(.6, 1.6), o: rnd(.3, .8) });
+      // ein paar feine Fäden hinter dem Logo
+      threads.length = 0;
+      for (let i = 0; i < 9; i++) threads.push({ x: rnd(-1, 1), p: Math.random(), v: rnd(.05, .12), o: rnd(.08, .18) });
+    }
+    let on = true, last = 0;
+    function draw(t){
+      g.clearRect(0, 0, W, H);
+      g.drawImage(stars, 0, 0, W, H);
+      const top = cy - R * 1.5, len = R * 3;
+      // Fäden: feine Linie + heller Punkt, der langsam nach unten läuft
+      for (const f of threads) {
+        const x = cx + f.x * R * .95;
+        g.strokeStyle = "rgba(226,184,102," + f.o + ")"; g.lineWidth = 1;
+        g.beginPath(); g.moveTo(x, top); g.lineTo(x, top + len); g.stroke();
+        f.p = (f.p + f.v / 30) % 1;
+        const py = top + f.p * len;
+        g.fillStyle = "rgba(255,230,170," + (f.o * 3.2).toFixed(2) + ")";
+        g.fillRect(x - .75, py - 18, 1.5, 18);
+      }
+      // Goldstaub: steigt langsam nach oben
+      for (const p of dust) {
+        p.y -= p.v / 30; if (p.y < 0) { p.y = 1; p.a = rnd(0, 6.283); }
+        const x = cx + Math.cos(p.a) * R * p.d, y = cy + R * 1.3 - p.y * R * 2.6;
+        g.globalAlpha = p.o * Math.sin(p.y * Math.PI);
+        g.fillStyle = "#f3d27e"; g.beginPath(); g.arc(x, y, p.s, 0, 6.283); g.fill();
+      }
+      g.globalAlpha = 1;
+    }
+    function loop(now){
+      if (on && !document.hidden && now - last > 33) { last = now; draw(now); }
+      requestAnimationFrame(loop);
+    }
+    size();
+    new ResizeObserver(size).observe(stage);
+    new IntersectionObserver(e => { on = e[0].isIntersecting; }).observe(stage);
+    draw(0); requestAnimationFrame(loop);
+  }
 }
 </script>
 </body>
