@@ -126,10 +126,10 @@
   /* ===== Ganze Seite 3D: fester WebGL-Hintergrund + 3D-Karten ===== */
   main,footer{position:relative;z-index:1}
   section{border-top:1px solid rgba(255,255,255,.07)}
-  .card,.prices,.info,.tb-step,.offer,.panel{background:rgba(18,16,13,.9);border-color:rgba(226,184,102,.16)}
+  .card,.prices,.info,.tb-step,.offer,.panel{background:rgba(14,15,18,.9);border-color:rgba(190,220,255,.16)}
   .card,.prices,.info{position:relative}
   @media(hover:hover){.card,.prices,.info{transform-style:preserve-3d}}
-  .card::after,.prices::after,.info::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(226,184,102,.13),transparent 60%)}
+  .card::after,.prices::after,.info::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(190,220,255,.13),transparent 60%)}
   .card:hover::after,.prices:hover::after,.info:hover::after{opacity:1}
   .card h3{transform:translateZ(30px)}
   .js3d .r3d{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
@@ -137,25 +137,25 @@
   .js3d .r3d.in.tilt{transition:transform .15s ease-out}
 
   /* ===== Gold-Preise + Daten-Pakete zum Logo ===== */
-  #preise h2{background:linear-gradient(100deg,#a87a2a,#f3d27e 40%,#fff3cf 50%,#e2b866 60%,#a87a2a);background-size:260% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shine 6s linear infinite}
-  .row strong{background:linear-gradient(100deg,#b8862e 0%,#f6d98b 35%,#fff4d0 50%,#e2b866 65%,#a87a2a 100%);background-size:260% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shine 4s linear infinite;filter:drop-shadow(0 0 10px rgba(226,184,102,.25))}
-  .row strong em{-webkit-text-fill-color:#d9b267;color:#d9b267}
+  #preise h2{background:linear-gradient(100deg,#8fb0db,#dfeeff 40%,#ffffff 50%,#cfe2fb 60%,#8fb0db);background-size:260% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shine 6s linear infinite}
+  .row strong{background:linear-gradient(100deg,#8fb0db 0%,#dfeeff 35%,#ffffff 50%,#cfe2fb 65%,#8fb0db 100%);background-size:260% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shine 4s linear infinite;filter:drop-shadow(0 0 10px rgba(190,220,255,.25))}
+  .row strong em{-webkit-text-fill-color:#b6cdee;color:#b6cdee}
   @keyframes shine{from{background-position:130% 0}to{background-position:-130% 0}}
-  .prices{border-color:rgba(226,184,102,.28)!important;box-shadow:0 0 0 1px rgba(226,184,102,.05),0 18px 50px -20px rgba(226,184,102,.18)}
-  .row{border-bottom-color:rgba(226,184,102,.12)!important;transition:background .4s,box-shadow .4s}
-  a.row:hover{background:rgba(226,184,102,.07)}
-  .row.send{background:rgba(226,184,102,.08);box-shadow:inset 3px 0 0 #e2b866}
+  .prices{border-color:rgba(190,220,255,.28)!important;box-shadow:0 0 0 1px rgba(190,220,255,.05),0 18px 50px -20px rgba(190,220,255,.18)}
+  .row{border-bottom-color:rgba(190,220,255,.12)!important;transition:background .4s,box-shadow .4s}
+  a.row:hover{background:rgba(190,220,255,.07)}
+  .row.send{background:rgba(190,220,255,.08);box-shadow:inset 3px 0 0 #cfe2fb}
   #data3d{position:fixed;inset:0;width:100%;height:100%;z-index:25;pointer-events:none}
   .nav img{transition:transform .25s,filter .25s}
 
   /* ===== Vor dem Start: Buchung noch zu ===== */
-  .btn.soon{background:transparent!important;border:1px solid rgba(226,184,102,.55)!important;color:#e2b866!important;cursor:default;pointer-events:none;gap:10px}
-  .btn.soon::before{content:"";width:8px;height:8px;border-radius:50%;background:#e2b866;box-shadow:0 0 0 0 rgba(226,184,102,.6);animation:ping 1.8s ease-out infinite}
-  @keyframes ping{70%{box-shadow:0 0 0 9px rgba(226,184,102,0)}100%{box-shadow:0 0 0 0 rgba(226,184,102,0)}}
-  .closed-pill{display:inline-flex;align-items:center;gap:8px;margin-bottom:16px;padding:6px 14px;border-radius:999px;border:1px solid rgba(226,184,102,.4);background:rgba(18,16,13,.6);color:#e2b866;font-size:.82rem;letter-spacing:.14em;font-weight:600}
+  .btn.soon{background:transparent!important;border:1px solid rgba(190,220,255,.55)!important;color:#cfe2fb!important;cursor:default;pointer-events:none;gap:10px}
+  .btn.soon::before{content:"";width:8px;height:8px;border-radius:50%;background:#cfe2fb;box-shadow:0 0 0 0 rgba(190,220,255,.6);animation:ping 1.8s ease-out infinite}
+  @keyframes ping{70%{box-shadow:0 0 0 9px rgba(190,220,255,0)}100%{box-shadow:0 0 0 0 rgba(190,220,255,0)}}
+  .closed-pill{display:inline-flex;align-items:center;gap:8px;margin-bottom:16px;padding:6px 14px;border-radius:999px;border:1px solid rgba(190,220,255,.4);background:rgba(14,15,18,.6);color:#cfe2fb;font-size:.82rem;letter-spacing:.14em;font-weight:600}
   .closed .row{pointer-events:none;cursor:default}
   .float .btn.soon,header .btn.soon{background:rgba(11,11,11,.96)!important}
-  .closed .row strong em{-webkit-text-fill-color:#9a8a6a;color:#9a8a6a}
+  .closed .row strong em{-webkit-text-fill-color:#7d8796;color:#7d8796}
 
   /* ===== Gut lesbare Schrift: größer, mehr Kontrast, kein Glanz, kein Blinken ===== */
   body{font-size:17px;line-height:1.65}
@@ -168,9 +168,9 @@
   .row{padding:22px 24px}
   .row div{font-size:1.08rem;font-weight:500}
   .row span{font-size:.98rem;color:#cfcfcf;margin-top:4px}
-  #preise h2,.row strong{background:none!important;-webkit-text-fill-color:#e8c36f!important;color:#e8c36f!important;animation:none!important;filter:none!important}
+  #preise h2,.row strong{background:none!important;-webkit-text-fill-color:#cfe2fb!important;color:#cfe2fb!important;animation:none!important;filter:none!important}
   .row strong{font-size:1.65rem}
-  .row strong em{font-size:.88rem!important;font-weight:600;-webkit-text-fill-color:#e8c36f!important;color:#e8c36f!important}
+  .row strong em{font-size:.88rem!important;font-weight:600;-webkit-text-fill-color:#cfe2fb!important;color:#cfe2fb!important}
   .hours td{padding:9px 0;font-size:1.02rem}
   .info p{font-size:1.05rem}
   .card::after,.prices::after,.info::after{display:none}
@@ -193,23 +193,23 @@
   @keyframes hammer{0%{transform:rotate(-50deg)}55%{transform:rotate(-62deg)}72%{transform:rotate(72deg)}80%{transform:rotate(64deg)}100%{transform:rotate(-50deg)}}
   @keyframes squash{0%,60%,100%{transform:scale(1,1)}74%{transform:scale(1.06,.93)}86%{transform:scale(.98,1.02)}}
   @keyframes spark{0%,70%{opacity:0;transform:scale(.4)}74%{opacity:.9;transform:scale(1)}88%{opacity:0;transform:scale(1.3)}100%{opacity:0}}
-  .tape{display:inline-block;padding:5px;margin-bottom:18px;border-radius:4px;background:repeating-linear-gradient(-45deg,#e2b866 0 12px,#141210 12px 24px)}
-  .tape span{display:block;background:#0b0b0b;color:#e8c36f;padding:7px 16px;font-weight:700;letter-spacing:.12em;font-size:.84rem;border-radius:2px}
+  .tape{display:inline-block;padding:5px;margin-bottom:18px;border-radius:4px;background:repeating-linear-gradient(-45deg,#cfe2fb 0 12px,#11141a 12px 24px)}
+  .tape span{display:block;background:#0b0b0b;color:#cfe2fb;padding:7px 16px;font-weight:700;letter-spacing:.12em;font-size:.84rem;border-radius:2px}
   .book .tape{margin-bottom:14px}
   .closed .hero .cta{margin-top:52px}
   .closed #buchen .btn.soon{margin-top:46px}
   .closed #preise .prices{margin-top:62px}
   /* ===== Logo fällt durch den Ring und landet auf dem Landeplatz ===== */
   /* Kleiner Bewerten-Knopf oben (nur solange die Buchung zu ist) */
-  .rate-top{display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border-radius:999px;border:1px solid rgba(226,184,102,.55);color:#e8c36f;text-decoration:none;font-size:.85rem;font-weight:600;white-space:nowrap;background:rgba(11,11,11,.6)}
-  .rate-top:hover{background:rgba(226,184,102,.12)}
+  .rate-top{display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border-radius:999px;border:1px solid rgba(190,220,255,.55);color:#cfe2fb;text-decoration:none;font-size:.85rem;font-weight:600;white-space:nowrap;background:rgba(11,11,11,.6)}
+  .rate-top:hover{background:rgba(190,220,255,.12)}
   .nav nav{gap:12px}
   @media(max-width:420px){.rate-top{padding:7px 10px;font-size:.8rem}.nav .btn{padding:8px 11px;font-size:.8rem}}
   /* ===== Feinschliff: Lesbarkeit, Luxus, Preis-Übersicht ===== */
-  .eyebrow{color:#e8c36f;font-size:.8rem;letter-spacing:.16em}
+  .eyebrow{color:#cfe2fb;font-size:.8rem;letter-spacing:.16em}
   section h2{line-height:1.15}
-  section h2::after{content:"";display:block;width:64px;height:1px;margin-top:16px;background:linear-gradient(90deg,#e8c36f,rgba(232,195,111,0))}
-  .book h2::after{margin-left:auto;margin-right:auto;background:linear-gradient(90deg,rgba(232,195,111,0),#e8c36f,rgba(232,195,111,0))}
+  section h2::after{content:"";display:block;width:64px;height:1px;margin-top:16px;background:linear-gradient(90deg,#cfe2fb,rgba(190,220,255,0))}
+  .book h2::after{margin-left:auto;margin-right:auto;background:linear-gradient(90deg,rgba(190,220,255,0),#cfe2fb,rgba(190,220,255,0))}
   .card h3,.tb-step b{font-family:Inter,system-ui,sans-serif!important;font-weight:600;letter-spacing:0;color:#fff;transform:none}
   .card p,.tb-step,.offer .what,.note,.tb-intro,.book p{color:#dcdcdc;line-height:1.7}
   .card{padding:26px 24px;border-radius:6px}
@@ -217,11 +217,11 @@
   .row div{color:#fff}
   .row span{color:#c9c9c9}
   .cat{font-family:Cinzel,serif;font-size:1.3rem;letter-spacing:.06em;color:#fff;margin:48px 0 14px;display:flex;align-items:center;gap:14px;scroll-margin-top:130px}
-  .cat::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(232,195,111,.5),rgba(232,195,111,0))}
+  .cat::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(190,220,255,.5),rgba(190,220,255,0))}
   .chips{position:sticky;top:64px;z-index:6;display:flex;gap:8px;overflow-x:auto;padding:12px 0;margin:18px 0 0;background:rgba(9,8,7,.95);scrollbar-width:none}
   .chips::-webkit-scrollbar{display:none}
-  .chips a{flex:none;padding:9px 16px;border:1px solid rgba(232,195,111,.45);border-radius:999px;color:#e8c36f;text-decoration:none;font-size:.9rem;font-weight:600;white-space:nowrap}
-  .chips a:hover{background:rgba(232,195,111,.12)}
+  .chips a{flex:none;padding:9px 16px;border:1px solid rgba(190,220,255,.45);border-radius:999px;color:#cfe2fb;text-decoration:none;font-size:.9rem;font-weight:600;white-space:nowrap}
+  .chips a:hover{background:rgba(190,220,255,.12)}
   .closed .float{display:none}
   .closed footer{padding-bottom:40px}
   a.loading{opacity:.6;pointer-events:none}
@@ -258,6 +258,9 @@
   .float{position:fixed;left:16px;right:16px;bottom:16px;z-index:30;display:none}
   .float .btn{width:100%}
   @media(max-width:720px){.float{display:block}}
+  /* Diamant-Schrift für Überschriften */
+  h1,h2,h3,.card h3{background:linear-gradient(160deg,#ffffff 0%,#e6f1ff 35%,#b9d0ee 60%,#f4f9ff 85%)!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;color:#dfeeff!important}
+  .hours td:last-child,.nav nav a:hover,footer a{color:#cfe2fb!important}
 </style>
 </head>
 <body>
@@ -472,7 +475,7 @@
 <footer>
   <div class="wrap">
     <p style="margin-bottom:10px"><b style="color:var(--text)">Impressum</b><br>Latif Sherifi · Lativ Fade Cut<br>Georgenstraße 3 · 86152 Augsburg<br>Telefon: +49 176 74746361<br>E-Mail: <a href="mailto:latifsharifi44@gmx.de" style="color:inherit">latifsharifi44@gmx.de</a></p>
-    <p style="margin-bottom:10px"><a href="datenschutz.html" style="color:#e8c36f">Datenschutzerklärung</a></p>
+    <p style="margin-bottom:10px"><a href="datenschutz.html" style="color:#cfe2fb">Datenschutzerklärung</a></p>
     © <span id="y"></span> Lativ Fade Cut · Augsburg
   </div>
 </footer>
